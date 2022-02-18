@@ -18,8 +18,8 @@ class Receiver(simx.PyService):
     def recv(self, msg):
         targetId = random.randrange(count)
         offset = int(exponential(1) + min_delay)
-        #print "node ",self.get_entity_id()," sending message with offset ",\
-        #    offset," at time ",simx.get_now(), "to target ", targetId
+        #print(f"node {self.get_entity_id()} sending message with offset \
+        #    {offset} at time {simx.get_now()} to target {targetId}")
         self.send_info(None,offset,('n',targetId),
                        addr_RECEIVER)
                        
@@ -30,7 +30,7 @@ class Node(simx.PyEntity):
     def __init__(self,ID,lp,entity_input,py_obj=None):
         super(Node,self).__init__(ID,lp,entity_input,self)
         self.install_service(Receiver, addr_RECEIVER)
-        #print "node ",ID," being created"
+        #print(f"node {ID} being created")
 
 
 simx.init("phold")

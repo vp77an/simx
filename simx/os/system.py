@@ -93,7 +93,7 @@ class System(core.PyService):
 
         if not process.resource is None:
             proc_info.gobject_.switch()
-            #print "proc info memory location",proc_info
+            #print(f"proc info memory location {proc_info}")
             return
 
         # else need to find a resource and assign to it.
@@ -101,9 +101,9 @@ class System(core.PyService):
         if process.req_res is None:
             #core = min(self.node.cores, key = lambda core : len(core.process_queue)) 
             if self.ready_processes:  #non-empty process queue
-                #print "appending process ",id(process),"to non-empty main queue"
+                #print(f"appending process {id(process)} to non-empty main queue")
                 self.ready_processes.append(process)
-                #print self.ready_processes
+                #print(self.ready_processes)
 
             else: # empty process queue
                 #check if an idle resource exists, and assign it to that one
@@ -111,9 +111,9 @@ class System(core.PyService):
                 if idle_res:
                     core = idle_res[0] 
                 else: #append to main process queue
-                    #print "appending process ",id(process),"to empty main queue, all resources busy"
+                    #print(f"appending process {id(process)} to empty main queue, all resources busy")
                     self.ready_processes.append(process)
-                    #print self.ready_processes
+                    #print(self.ready_processes)
 
         else: # process had explicity requested a resource
             if  process.req_res.busy == True: # requested resource is busy
@@ -204,7 +204,7 @@ class System(core.PyService):
         """
         p1 waits for p2 to finish
         """
-        #print "freeing resource"
+        #print("freeing resource")
         self.free_resource(p1)
         # the following statement will cause a switch back to the main greenlet
         self.pm.proc_waitfor(p1, p2)

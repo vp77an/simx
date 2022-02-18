@@ -43,7 +43,7 @@ def install_service(self, service, address,
     """
     if not isinstance(self, core.PyEntity):
         ds.error.write("Argument ",self," not of type PyEntity")
-        raise TypeError, "install_service: Instance must be of type PyEntity"
+        raise TypeError("install_service: Instance must be of type PyEntity")
     
     service = core.add_service(service.__name__, 
                                profile, data)

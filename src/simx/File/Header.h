@@ -56,7 +56,7 @@ namespace File {
       Header(const std::string header_line, int numFixedFields);
 
       /// Read a header from a stream
-      bool Read(std::istream& is);
+      std::istream& Read(std::istream& is);
 
       /// Write a header to a stream
       void Print(std::ostream& os) const;

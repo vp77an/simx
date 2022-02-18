@@ -20,15 +20,15 @@ class processApp(simx.Process):
     def run(self):
         while True:
             x = int(maxSleep*random.random())
-            #print "Sleeping for", x
+            #print(f"Sleeping for {x}")
             self.sleep(x)
-            #print "Woke"
+            #print("Woke")
 
 for i in xrange(count):
-    #print "Adding process", i
+    #print(f"Adding process {i}")
     mg = processApp()
     simx.schedule_process(mg)
 
 #raw_input("Press Enter to continue...")
-print "Starting Run"
+print("Starting Run")
 simx.run()

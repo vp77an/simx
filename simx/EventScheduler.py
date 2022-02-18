@@ -51,13 +51,13 @@ class EventScheduler:
             return
         #else
         #schedule a timer just before this event and switch back to main "thread"
-        #print "SHOULD NOT"
+        #print("SHOULD NOT")
         core.set_event_scheduler_timer(time)
         greenlet.getcurrent().parent.switch()
     # when switching back to this "thread", execution resumes from here
     
     def process_scheduler_event(self):
-        #print "NEW BATCH OF EVENTS BEING SCHEDULED"
+        #print("NEW BATCH OF EVENTS BEING SCHEDULED")
         self.upto_time = core.get_now() + self.time_chunk
         #switch to event_creator thread
         self.event_creator.switch()

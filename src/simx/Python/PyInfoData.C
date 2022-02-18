@@ -69,7 +69,7 @@ namespace simx {
 void export_PyInfoData() {
   
   //  class_<PyInfoData>("InfoData",init<>() )
-  class_<PyInfoData>("InfoData",init<Time,tuple&,long,Info::ClassType,
+  class_<PyInfoData>("InfoData",init<Time,boost::python::tuple&,long,Info::ClassType,
 		     ProfileID,PyProfile&,object&>() )
     // .def_readwrite("time_",&PyInfoData::fTime)
     // .def_readwrite("id_",&PyInfoData::fEntityId)

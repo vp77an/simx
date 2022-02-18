@@ -325,10 +325,10 @@ namespace Global
     int rac = gOptMan.GetNumOptionsBeforeDDash();
     OptionHandler oh;
 
-    for (int i = 0, j = 0; i < rac; i++, j = 0) {
+    for (int i = 0; i < rac; i++) {
       oh = OptionMap::Instance().GetHandler(gOptMan[i].GetName());
       if (oh) {
-	oh(gOptMan[i]);
+	      oh(gOptMan[i]);
       }
     }
 

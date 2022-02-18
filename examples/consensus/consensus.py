@@ -71,7 +71,7 @@ class Receiver(simx.PyService):
         try:
             self.node.neighbor_pos[msg.id] = msg.loc
         except KeyError:
-            print "Neighbor ", id, " does not exist for node ",self.node.get_id()
+            print(f"Neighbor {id} does not exist for node {self.node.get_id()}")
     
     def recv_loc_list_msg(self,msg):
         for node,location in msg.pos_info.iteritems():
@@ -106,7 +106,7 @@ class Node(simx.PyEntity):
         Updates position of this node
         Sends new position information to neighbors
         """
-        #print "Node ",self.get_id(),"in updater at time ",self.get_now()
+        #print(f"Node {self.get_id()} in updater at time {self.get_now()}")
         elapsed_time = simx.get_now() - self.last_update_time
         self.last_update_time = simx.get_now()
         self.loc  = (self.loc[0]+self.vel[0]*elapsed_time,

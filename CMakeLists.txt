@@ -104,7 +104,8 @@ set_target_properties(${TARGET_NAME} PROPERTIES
     
 
 
-
+# Strangely, this includes "Boost::python", which leads to an error during linking.
+# So, it would have to removed from the auto-generated config.py file.
 list(APPEND SIMX_LINK_LIBRARIES ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
 if(SIMX_USE_MPI)
     list(APPEND SIMX_LINK_LIBRARIES ${MPI_CXX_LIBRARIES} ${MPI_LIBRARIES})
@@ -194,7 +195,7 @@ file(APPEND config.py "]
 
 ")
 
-#link libraties
+#link libraries
 file(APPEND config.py "libraries = [")
 foreach(lib ${SIMX_LINK_LIBRARIES})
   file(APPEND config.py "\"${lib}\",")
@@ -205,7 +206,7 @@ file(APPEND config.py "]
 
 
 #more library directories, but  remove duplicate entries
-file(APPEND config.py "library_dirs = list(set(library_dirs+map(op.dirname,libraries)))
+file(APPEND config.py "library_dirs = list(set(library_dirs+list(map(op.dirname,libraries))))
 
 ")
 
@@ -221,7 +222,7 @@ def revise_lib(lib):
         if lib[:3]=='lib' : lib = lib[3:]
     return lib
     
-libraries = map(revise_lib, libraries)
+libraries = list(map(revise_lib, libraries))
 
 ")
 
@@ -241,7 +242,7 @@ file(APPEND config.py "]
 # setup.py needs relative paths. The above file list contains absolute paths
 # since that's the way of CMake. So, embed code in config.py for converting absolute
 # paths to relative paths.
-file(APPEND config.py "all_sources = map(op.relpath,all_sources)
+file(APPEND config.py "all_sources = list(map(op.relpath,all_sources))
 
 ")
 
@@ -258,7 +259,7 @@ file(APPEND config.py "]
 # setup.py needs relative paths. The above file list contains absolute paths
 # since that's the way of CMake. So, embed code in config.py for converting absolute
 # paths to relative paths.
-file(APPEND config.py "all_headers = map(op.relpath,all_headers)
+file(APPEND config.py "all_headers = list(map(op.relpath,all_headers))
 
 ")
 
@@ -270,7 +271,7 @@ sources = all_sources,
 include_dirs = include_dirs,
 library_dirs = library_dirs,
 libraries = libraries,
-depends = all_headers +['${CMAKE_BINARY_DIR}/CMakeCache.txt'],
+depends = all_headers +[op.relpath('${CMAKE_BINARY_DIR}/CMakeCache.txt')],
 extra_compile_args = CXX_FLAGS)
 
 ")

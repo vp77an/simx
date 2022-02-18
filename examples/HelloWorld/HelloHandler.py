@@ -44,9 +44,9 @@ class HelloHandlerPerson(simx.PyService):
                               'ReplyMessage':self.recv_ReplyMessage
                               }
         #self.id_num = self.get_entity_id()[1]
-        #print "hello handler entity id number is",self.id_num
+        #print(f"hello handler entity id number is {self.id_num}")
         #self.neighbor_id = ('p',1-self.id_num)
-        #print "neighbor id is ",self.neighbor_id
+        #print(f"neighbor id is {self.neighbor_id}")
 
     def recv(self,msg):
         
@@ -56,8 +56,8 @@ class HelloHandlerPerson(simx.PyService):
         #rf(msg)
 
     def recv_HelloMessage(self,msg):
-        #print "person ",self.get_entity_id()," received hello from ", \
-         #   msg.source_id, " at time ", simx.get_now()
+        #print(f"person {self.get_entity_id()} received hello from \
+         #   {msg.source_id} at time {simx.get_now()}")
         #simx.debug3.write("HelloHandler received hello",msg)
         #simx.output.write(self,100,'Received a hello')
         #simx.output.write(self,200,"Random number:",
@@ -72,8 +72,8 @@ class HelloHandlerPerson(simx.PyService):
     def recv_ReplyMessage(self,msg):
         #simx.debug3.write("HelloHandlerPerson::receive(Reply):",msg)
         #simx.output.write(self,100,"Received a reply")
-        #print "person ",self.get_entity_id()," received reply from ", \
-        #    msg.source_id, " at time ", simx.get_now()
+        #print(f"person {self.get_entity_id()} received reply from  \
+        #    {msg.source_id} at time {simx.get_now()}")
         pass
     
     def __str__(self):

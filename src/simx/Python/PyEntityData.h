@@ -55,7 +55,7 @@ namespace simx {
       fEntityId( py2EntityId(ent_id) ),
       fEntityType( type ), 
       fProfileId( pr_id ),
-	fProfile( profile ),
+	    fProfile( profile ),
       fData( data ) 
       {}
       

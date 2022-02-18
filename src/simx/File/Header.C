@@ -100,7 +100,7 @@ using namespace std;
     return NumberFields() - NumberFixedFields();
   }
 
-  bool Header::Read(std::istream& is)
+  std::istream& Header::Read(std::istream& is)
   {
     getline(is, fHeader);
     stringstream s;

@@ -187,8 +187,7 @@ namespace simx{
     }
 
     // function to execute call-backs in python
-    void PyEntity::pyCallBack( tuple<string,
-			       python::tuple>& cb_tuple ) {
+    void PyEntity::pyCallBack( boost::tuple<string, boost::python::tuple>& cb_tuple ) {
 
       // string is the attribute of fPyObj that will be called.
       // There is no guarantee that fPyObj will have such an attribute,
@@ -198,21 +197,19 @@ namespace simx{
       // forgiveness than permission" (EAFP)
       const char* atr = cb_tuple.get<0>().c_str();
       try {
-	fPyObj.attr( atr )( cb_tuple.get<1>() );
+	      fPyObj.attr( atr )( cb_tuple.get<1>() );
       }
       
       catch (const python::error_already_set& e) {
 	
-	Logger::error() << "PyEntity: pyCallBack(): Python error occured  "
-			<< "while trying to call method " << atr
-			<< " for entity " << getId() << endl;
+        Logger::error() << "PyEntity: pyCallBack(): Python error occured  "
+          << "while trying to call method " << atr
+          << " for entity " << getId() << endl;
 
-	PyErr_Print();
-	PyErr_Clear();
+        PyErr_Print();
+        PyErr_Clear();
       }
-		     
     }
-
   } //namespace simx
 } //namespace Python
 

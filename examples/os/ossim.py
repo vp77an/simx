@@ -27,31 +27,31 @@ import simx.os as os
 
 class BarProcess(os.Process):
      def __init__(self):
-        print "Bar process ",id(self)," created on node",self.os.get_entity_id()
+        print(f"Bar process {id(self)} created on node {self.os.get_entity_id()}")
         
      def run(self):
-         print "Bar process",id(self),"on node",self.os.get_entity_id(), \
-             " started running on resource ", self.resource, \
-             " at time ", simx.get_now()
+         print(f"Bar process {id(self)} on node {self.os.get_entity_id()} \
+                started running on resource {self.resource} \
+                at time {simx.get_now()}")
          
         
          self.compute(100)
-         print "Bar process ",id(self)," on node",self.os.get_entity_id(), \
-            "finished computing on resource ",self.resource, \
-            " at time ", simx.get_now()
+         print(f"Bar process {id(self)} on node {self.os.get_entity_id()} \
+                finished computing on resource {self.resource} \
+                at time {simx.get_now()}")
 
 
 #define a process
 class FooProcess(os.Process):
     
     def __init__(self):
-        print "Foo process created on node",self.os.get_entity_id()
+        print(f"Foo process created on node {self.os.get_entity_id()}")
 
 
     def run(self):
-        print "Foo process",id(self),"on node",self.os.get_entity_id(),  \
-             " started running on resource ", self.resource, \
-             " at time ", simx.get_now()
+        print(f"Foo process {id(self)} on node {self.os.get_entity_id()}  \
+                started running on resource {self.resource} \
+                at time {simx.get_now()}")
 
         
 
@@ -60,18 +60,18 @@ class FooProcess(os.Process):
         #self.kill(bp)
         self.compute(100)
         self.kill(bp)
-        print "Foo process ",id(self)," on node",self.os.get_entity_id(), \
-            "finished computing on resource ",self.resource, \
-            " at time ", simx.get_now()
+        print(f"Foo process {id(self)} on node {self.os.get_entity_id()} \
+                finished computing on resource {self.resource} \
+                at time {simx.get_now()}")
         
         
         bp = self.os.create_process(BarProcess)
         # waits for Bar process to finish before resuming
         self.waitfor(bp)
 
-        print "Foo process ",id(self)," on node",self.os.get_entity_id(), \
-            "returned from waitfor. Acquired resource ",self.resource, \
-            " at time ", simx.get_now()
+        print(f"Foo process {id(self)} on node {self.os.get_entity_id()} \
+                returned from waitfor. Acquired resource {self.resource} \
+                at time {simx.get_now()}")
 
 
 

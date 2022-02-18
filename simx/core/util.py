@@ -79,6 +79,6 @@ def check_type(class_type, obj):
     if not isinstance(obj, class_type):
         err_str = ''.join[obj.__name__,"must be of type",class_type.__name__]
         DebugStream.error.write(err_str)
-        raise TypeError, err_str
+        raise TypeError (err_str)
 
         

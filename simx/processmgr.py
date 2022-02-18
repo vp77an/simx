@@ -254,7 +254,7 @@ class ProcessManager(core.PyService):
             pi = self.proc_table[id(parent)]
             pi.add_child( child )
         except KeyError:
-            print "ProcessManager::proc_add_child: process not found in process table"
+            print("ProcessManager::proc_add_child: process not found in process table")
              
 
     def proc_remove_child(self, parent, child):
@@ -265,7 +265,7 @@ class ProcessManager(core.PyService):
             pi = self.proc_table[id(parent)]
             pi.remove_child( child )
         except KeyError:
-            print "ProcessManager::proc_remove_child: process not found in process table"
+            print("ProcessManager::proc_remove_child: process not found in process table")
 
 
     def proc_sleep( self, proc, duration = None, switch = True ):
@@ -343,7 +343,7 @@ class ProcessManager(core.PyService):
         """
         #util.check_type(process.Process, p1)
         p1_info = self.proc_table[id(p1)]
-        #print "in wait for. chaning proc info at memory location",p1_info
+        #print(f"in wait for. chaning proc info at memory location {p1_info}")
         if not p1_info.gobject_ == greenlet.getcurrent():
             ds.failure.write("ProcessManager: Invalid greenlet call state")
         if not p1_info.status_ == ProcStatus._active:

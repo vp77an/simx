@@ -75,8 +75,7 @@ using boost::shared_ptr;
 	( cls_method.attr("__name__") );
       
 
-      tuple<string,python::tuple> t = tuple<string,python::tuple>
-	(name,args);
+      boost::tuple<string,python::tuple> t = boost::tuple<string,python::tuple> (name,args);
 
        theEntityManager().probeEntities(&PyEntity::pyCallBack,
 					t, *type_str.c_str() );

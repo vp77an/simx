@@ -37,9 +37,9 @@ class CountDown(simx.Process):
     def run(self):
         i = self.from_
         while i > 0:
-            print "Countdown process: ",self.id_,"Time: %s: Value %s  " %(simx.get_now(),i)
+            print(f"Countdown process: {self.id_} Time: {simx.get_now()} : Value {i}  ")
             self.sleep(1)
-            print "Countdown process: ",self.id_," wake up at time:", simx.get_now()
+            print(f"Countdown process: {self.id_} wake up at time: {simx.get_now()}")
             #foo = fooprocess()
             #self.waitfor(fooprocess())
             foo = fooprocess(i)
@@ -58,13 +58,13 @@ class fooprocess(simx.Process):
         self.id_ = id_
 
     def run(self):
-        print "foo process: ",self.id_," Time: ",simx.get_now()
+        print(f"foo process: {self.id_} Time: {simx.get_now()}")
         self.sleep(2)
-        print "foo process: ",self.id_," wake up at time:",simx.get_now()
+        print(f"foo process: {self.id_} wake up at time: {simx.get_now()}")
         self.spawn(fooprocess(self.id_))
 
     def end(self):
-        print "foo process: ",self.id_," ends here"
+        print(f"foo process: {self.id_} ends here")
 
 simx.init("cdkill")
 
