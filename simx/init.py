@@ -17,12 +17,12 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See LICENSE.txt for more details.
 
 
-import core
+import simx.core as core
 #import core_ext
 #import DebugStream as ds
 #import util
-import config
-from controller import Controller
+import simx.config as config
+from simx.controller import Controller
 
 #from controller import Controller
 

@@ -1,7 +1,7 @@
 AM_CXXFLAGS = @MPI_CXXFLAGS@ @BOOST_CXXFLAGS@ -I$(top_builddir) -I$(top_srcdir)
 AM_CFLAGS = @MPI_CFLAGS@ @BOOST_CFLAGS@ -I$(top_builddir) -I$(top_srcdir)
 AM_LDFLAGS = @MPI_LDFLAGS@ @BOOST_LDFLAGS@
-PYTHON_CXXFLAGS= -I/usr/include/boost -I/usr/include/python2.6
+PYTHON_CXXFLAGS= -I/usr/include/boost -I/usr/include/python3.8
 
 SUBDIRS = \
 	Common \

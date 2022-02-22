@@ -16,9 +16,9 @@
 # it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of 
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See LICENSE.txt for more details.
 
-import core
-import core.DebugStream as ds
-import processmgr as pm
+import simx.core.core as core
+import simx.core.DebugStream as ds
+import simx.processmgr as pm
 
 
 class Controller(core.PyEntity):

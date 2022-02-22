@@ -18,7 +18,7 @@ libGlobal_la_SOURCES = \
 	util.C \
 	util.h
 
-libGlobal_la_CXXFLAGS = -I/usr/include/boost -I/usr/include/python2.6
+libGlobal_la_CXXFLAGS = -I/usr/include/boost -I/usr/include/python3.8
 
 ######################################################################
 ######################################################################

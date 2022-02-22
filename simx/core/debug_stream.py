@@ -17,11 +17,18 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See LICENSE.txt for more details.
 
 import sys
-from cStringIO import StringIO
+from io import StringIO
 
-import core
+import simx.core as core
 #import simx_core
 
+core.debug1     = None
+core.debug2     = None
+core.debug3     = None
+core.debug_info = None
+core.warn       = None
+core.error      = None
+core.failure    = None
 
 # Define debug streams
 class DebugStream:
@@ -48,16 +55,16 @@ class DebugStream:
     # define debug stream writer method   
     def write(self,*message):
         for token in message:
-            self.debug_str.write(str(token));
+            self.debug_str.write(str(token))
             #self.debug_str.write(" ");
         self.logger[self.stream_type](self.debug_str.getvalue())
         self.debug_str.truncate(0)
 
 #create debug streams here
-debug1 = DebugStream('debug1')
-debug2 = DebugStream('debug2')
-debug3 = DebugStream('debug3')
-info = DebugStream('info')
-error = DebugStream('error')
-warn = DebugStream('warn')
+debug1  = DebugStream('debug1')
+debug2  = DebugStream('debug2')
+debug3  = DebugStream('debug3')
+info    = DebugStream('info')
+error   = DebugStream('error')
+warn    = DebugStream('warn')
 failure = DebugStream('failure')

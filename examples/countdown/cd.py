@@ -19,8 +19,12 @@
 """
 Demo of process spawn, sleep
 """
+try:
+    import simx
+except AttributeError:
+    import simx
 
-import simx
+import simx.core
 
 
 class CountDown(simx.Process):

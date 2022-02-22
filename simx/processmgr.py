@@ -19,11 +19,11 @@
 from greenlet import greenlet
 from collections import namedtuple
 
-import core
-import core.util as util
-import core.DebugStream as ds
-import controller
-import process
+import simx.core as core
+from simx.core.debug_stream import DebugStream as ds
+import simx.controller as controller
+#import simx.core.util as util
+#import simx.process
 #from process import Process
 #import process.Process as Process
 

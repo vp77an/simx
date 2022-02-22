@@ -17,9 +17,9 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See LICENSE.txt for more details.
 
 import sys
-from cStringIO import StringIO
+from io import StringIO
 
-import core
+import simx.core as core
 
 # Define output streams
 class OutputStream:
@@ -29,8 +29,8 @@ class OutputStream:
     # sim_obj should be derived from either PyEntity or PyService    
     def write(self,sim_obj,record_type,*message):
         for token in message:
-            self.output_str.write(str(token));
-            self.output_str.write(" ");
+            self.output_str.write(str(token))
+            self.output_str.write(" ")
         core.output(sim_obj,record_type,self.output_str.getvalue())    
         self.output_str.truncate(0)
 

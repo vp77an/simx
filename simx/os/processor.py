@@ -16,10 +16,9 @@
 # it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of 
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See LICENSE.txt for more details.
 
-import simx
-#import Resource
+from simx.resource import Resource
 
-class Processor(simx.Resource):
+class Processor(Resource):
     """
     A SimX resource  that represents a computer CPU (or CPU core)
     """

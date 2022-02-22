@@ -23,10 +23,9 @@
 
 import simx
 import simx.core as core
-import simx.core.DebugStream as ds
-from simx.processmgr import ProcStatus
-from process import Process
-import simx.processmgr
+from simx.core.debug_stream import DebugStream as ds
+from simx.processmgr import *
+from simx.process import Process
 
 
 class System(core.PyService):

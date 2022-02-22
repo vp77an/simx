@@ -25,7 +25,7 @@ Provides commonly used utility functions
 
 """
 
-from DebugStream import error
+from simx.core.DebugStream import *
 
 def get_profile_id( profile_obj):
     """

@@ -22,13 +22,13 @@ Extensions to :mod:`simx.core.core`
 
 """
 
-import core
+import simx.core as core
 
 #from  simx import DebugStream as ds
-import DebugStream as ds
+import simx.core.debug_stream as ds
 
 #from  simx import util
-import util
+import simx.core.util as util
 
 #from simx.controller import Controller
 #from controller import Controller

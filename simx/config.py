@@ -23,7 +23,7 @@ parameters in simx
 
 """
 
-import core
+import simx.core as core
 
 def set_num_proc( np ):
     """

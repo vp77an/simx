@@ -8,17 +8,18 @@ SimX
 """
 
 
-from core import *
-from process import *
-from processmgr import *
+from simx.core import *
+from simx.os import *
+from simx.process import *
+from simx.processmgr import *
 
-from resource import *
+from simx.resource import *
 
-from init import *
-from pyentity_ext import *
-from controller import *
-from core.DebugStream import *
-from core.OutputStream import *
-from EventScheduler import *
-from core.util import *
-from config import *
+from simx.init import *
+from simx.pyentity_ext import *
+from simx.controller import *
+from simx.core.debug_stream import *
+from simx.core.output_stream import *
+from simx.EventScheduler import *
+from simx.core.util import *
+from simx.config import *

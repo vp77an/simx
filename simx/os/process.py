@@ -16,9 +16,9 @@
 # it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of 
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See LICENSE.txt for more details.
 
-import simx
+from simx.process import Process
 
-class Process(simx.Process):
+class Process(Process):
     """
     Class for modeling a computer process
     """

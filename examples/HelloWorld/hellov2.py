@@ -16,7 +16,11 @@
 # it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of 
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See LICENSE.txt for more details.
 
-import simx
+try:
+    import simx
+except AttributeError:
+    import simx
+
 from Person import *
 from HelloHandler import *
 
@@ -34,7 +38,7 @@ simx.init_env()
 
 
 # create Persons
-for i in xrange(num_entities):
+for i in range(num_entities):
     simx.create_entity(('p',i), Person)
     
 # create a message generation process
@@ -43,9 +47,9 @@ class MessageGen (simx.Process):
     Schedule simple message sending and receiving
     """
     def run(self):
-        for evt_time in xrange(1,end_time/2-1):
-            hello_rcvr = ('p',random.choice(xrange(num_entities)))
-            reply_rcvr = ('p',random.choice(xrange(num_entities)))
+        for evt_time in range(1,end_time/2-1):
+            hello_rcvr = ('p',random.choice(range(num_entities)))
+            reply_rcvr = ('p',random.choice(range(num_entities)))
             #print evt_time,hello_rcvr,reply_rcvr
             simx.schedule_event(simx.get_now()+evt_time, hello_rcvr, eAddr_HelloHandlerPerson,
                                 HelloMessage(source_id=reply_rcvr))

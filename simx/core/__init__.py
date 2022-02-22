@@ -1,2 +1,2 @@
-from core import *
-from core_ext import *
+from simx.core import *
+from .core_ext import *

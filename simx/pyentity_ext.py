@@ -16,11 +16,8 @@
 # it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of 
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See LICENSE.txt for more details.
 
-#import simx
-#import simx.core as core
-import core
-#import core_ext
-import core.DebugStream as ds
+import simx.core as core
+from simx.core.debug_stream import DebugStream as ds
 
 """
 

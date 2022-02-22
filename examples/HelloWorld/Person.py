@@ -18,7 +18,10 @@
 
 #import sys
 
-import simx
+try:
+    import simx
+except AttributeError:
+    import simx
 
 #from DebugStream import *
 #from OutputStream import *
@@ -26,7 +29,7 @@ import simx
 from HelloHandler import *
 
 ###### Define Entities ########
-class Person(simx.PyEntity):
+class Person(simx.core.PyEntity):
     def __init__(self,ID,lp,entity_input,py_obj=None):
         if py_obj is None:
             py_obj = self

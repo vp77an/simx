@@ -16,7 +16,7 @@
 # it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of 
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See LICENSE.txt for more details.
 
-import processmgr as pm
+import simx.processmgr as pm
 
 class Process(object):
     """

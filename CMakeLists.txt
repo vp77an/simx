@@ -39,22 +39,20 @@ else()
  #   endif()
 endif()
 
+
+# for python
+find_package(PythonInterp 3 REQUIRED)
+find_package(PythonLibs 3 REQUIRED)
+include_directories(${PYTHON_INCLUDE_DIRS} ${PYTHON_INCLUDE_DIR} ${PYTHON_INCLUDE_PATH})
+link_directories(${PYTHON_LIBRARY_DIRS})
+
 # for boost
 set(Boost_USE_STATIC_LIBS  OFF)
 set(Boost_USE_STATIC_RUNTIME OFF)
-find_package(Boost COMPONENTS
-		   python
-		   REQUIRED)
+find_package(Boost COMPONENTS python REQUIRED)
 INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
 ADD_DEFINITIONS( "-DHAS_BOOST" )
 link_directories(${Boost_LIBRARY_DIRS})
-
-
-# for python
-find_package(PythonInterp 2 REQUIRED)
-find_package(PythonLibs 2 REQUIRED)
-include_directories(${PYTHON_INCLUDE_DIRS} ${PYTHON_INCLUDE_DIR} ${PYTHON_INCLUDE_PATH})
-link_directories(${PYTHON_LIBRARY_DIRS})
 
 # for simx sources
 file(GLOB_RECURSE SIMX_SOURCES src/simx/*.C)
@@ -106,6 +104,7 @@ set_target_properties(${TARGET_NAME} PROPERTIES
 
 # Strangely, this includes "Boost::python", which leads to an error during linking.
 # So, it would have to removed from the auto-generated config.py file.
+# Instead we need to include this: /usr/lib/x86_64-linux-gnu/libboost_python38.so.1.71.0 
 list(APPEND SIMX_LINK_LIBRARIES ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
 if(SIMX_USE_MPI)
     list(APPEND SIMX_LINK_LIBRARIES ${MPI_CXX_LIBRARIES} ${MPI_LIBRARIES})

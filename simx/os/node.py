@@ -16,13 +16,13 @@
 # it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of 
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See LICENSE.txt for more details.
 
-import simx
-#import simx.os as os
-import system
-# define service addresses
-from processor import Processor
+import simx.core as core
 
-class Node(simx.PyEntity):
+import simx.os.system as system
+# define service addresses
+from simx.os.processor import Processor
+
+class Node(core.PyEntity):
     """
     Class that represents a compute node. A compute node might
     consist of a number of other entities, such as processors, I/O devices,

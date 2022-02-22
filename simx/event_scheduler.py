@@ -17,11 +17,9 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See LICENSE.txt for more details.
 
 
-import sys
 from greenlet import greenlet
 
-import core
-#from simx.util import *
+import simx.core as core
 
 _evt_scheduler = None
 

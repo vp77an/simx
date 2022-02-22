@@ -3,7 +3,7 @@
 ######################################################################
 
 ######################################################################
-PYTHON_CXXFLAGS= -I/usr/include/boost -I/usr/include/python2.6
+PYTHON_CXXFLAGS= -I/usr/include/boost -I/usr/include/python3.8
 #noinst_HEADERS = \
 	main.h
 

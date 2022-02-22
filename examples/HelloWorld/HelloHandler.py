@@ -17,9 +17,14 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See LICENSE.txt for more details.
 
 import sys
-import cPickle
+#import cPickle
 
-import simx
+try:
+    import simx
+except AttributeError:
+    import simx
+
+import simx.core as core
 
 #from DebugStream import *
 #from OutputStream import *
@@ -29,10 +34,10 @@ import random
 import math
 
 #### Define Services ##########
-eAddr_HelloHandlerPerson = 11101;
+eAddr_HelloHandlerPerson = 11101
 
 
-class HelloHandlerPerson(simx.PyService):
+class HelloHandlerPerson(core.PyService):
 
     def __init__(self,name, person, service_input ):
         super(HelloHandlerPerson,self).__init__( name, person, service_input,self )
@@ -80,5 +85,5 @@ class HelloHandlerPerson(simx.PyService):
         return "HelloHandler(%s)" %(self.get_entity_id())
 
 # should we make this one call? i.e register_service and register_addr?
-simx.register_service(HelloHandlerPerson)
-simx.register_address("eAddr_HelloHandlerPerson",eAddr_HelloHandlerPerson)
+core.register_service(HelloHandlerPerson)
+core.register_address("eAddr_HelloHandlerPerson",eAddr_HelloHandlerPerson)
